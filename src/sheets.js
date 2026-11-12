@@ -1,6 +1,9 @@
 import { google } from 'googleapis';
 import isEqual from 'lodash.isequal';
 
+const NETWORK_ERRORS = new Set(['ETIMEDOUT', 'EAI_AGAIN', 'ECONNRESET', 'ECONNREFUSED', 'ENOTFOUND', 'EHOSTUNREACH', 'ENETUNREACH']);
+``;
+
 export class SheetsController {
     prevData = null;
 
