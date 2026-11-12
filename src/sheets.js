@@ -47,6 +47,12 @@ export class SheetsController {
 
             return null;
         } catch (error) {
+            const errorCode = error.code ?? error.cause?.code;
+
+            if (NETWORK_ERRORS.has(errorCode)) {
+                console.error(`[SheetsController] Ошибка подключения к Google Sheets: ${errorCode}`);
+                return null;
+            }
             console.error('[SheetsController] Ошибка при чтении таблицы:', {
                 message: error.message,
                 code: error.code,
